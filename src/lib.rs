@@ -4,8 +4,8 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert_eq!("zhq123vc", get_pinyin("张华强123vc"));
-        assert_eq!("bjyrysmyxgs", get_pinyin("北京益瑞盈商贸有限公司"));
+        assert_eq!("zhq123vc", get_pinyin("张华强-123vc"));
+        assert_eq!("bjyrysmyxgs", get_pinyin("北京益瑞盈-商贸有限公司"));
         assert_eq!("xnbjjsyxgs", get_pinyin("信念（北京）技术有限公司"));
     }
 }
@@ -23,7 +23,7 @@ pub fn get_pinyin(text: &str) -> String {
                     break;
                 }
             }
-        } else {
+        } else if t.is_alphanumeric() {
             py_get.push(t);
         }
     }
